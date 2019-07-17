@@ -34,5 +34,7 @@ The landscape player implementation is being controlled by a remote config.
   }
 }
 ```
+## Use of firestore for remote config/ feature toggle Inspired by Getting Started with Cloud Firestore Workshop (13:30 talk)
 
+<a href="https://github.com/objectiveCarlo/android_droidconsghack/blob/master/app/src/main/java/ph/carlo/android/cldroidconhack/data/feature/FeatureFireStoreImplementation.kt"><img src="https://raw.githubusercontent.com/objectiveCarlo/android_droidconsghack/master/__images/firestore.png" title="CleanArchictecture" alt="CleanArchictecture"></a>
 
