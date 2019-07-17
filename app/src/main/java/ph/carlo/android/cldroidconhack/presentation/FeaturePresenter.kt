@@ -1,6 +1,7 @@
 package ph.carlo.android.cldroidconhack.presentation
 
 import android.content.Context
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.google.gson.internal.LinkedHashTreeMap
 import io.reactivex.Observer
@@ -55,14 +56,17 @@ class FeaturePresenter(val mvpView: FeatureMVPView) {
 
        val exoIsOn = playerFeatures["exoplayer"]!! as Boolean
        val mediaIsOn = playerFeatures["mediaplayer"]!! as Boolean
-
+       var toast = "Media player for landscape"
        if (exoIsOn) {
+           toast = "Exo player for landscape"
            initializeExo()
        } else {
            if (mediaIsOn) {
                initializeMedia()
            }
        }
+
+        Toast.makeText(mvpView.getContext(), toast, Toast.LENGTH_LONG).show()
     }
 
     private fun initializeExo() {
