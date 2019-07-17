@@ -1,4 +1,3 @@
 package ph.carlo.android.cldroidconhack.data.feature
 
-class FeatureFeed {
-}
+data class FeatureFeed (var features: HashMap<String, String>)

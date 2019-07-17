@@ -1,4 +1,14 @@
 package ph.carlo.android.cldroidconhack.data.feature
 
-class FeatureFeedRepository {
+import io.reactivex.Observable
+
+object FeatureFeedRepository {
+
+    private fun getDependency(): FeatureFeedAPIInterface {
+        return FeatureFeedImplementation()
+    }
+
+    fun getFeatureFeed(): Observable<FeatureFeed> {
+        return getDependency().getFeatureFeed()
+    }
 }
