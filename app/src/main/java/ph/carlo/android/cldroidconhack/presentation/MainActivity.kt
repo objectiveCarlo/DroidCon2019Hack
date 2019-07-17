@@ -85,13 +85,13 @@ class MainActivity : AppCompatActivity() {
             val videoParams = surfaceView.layoutParams
 
 
-            if (videoWidth > videoHeight) {
-                videoParams.width = screenWidth
-                videoParams.height = screenWidth * videoHeight / videoWidth
-            } else {
+//            if (videoWidth > videoHeight) {
+//                videoParams.width = screenWidth
+//                videoParams.height = screenWidth * videoHeight / videoWidth
+//            } else {
                 videoParams.width = screenHeight * videoWidth / videoHeight
                 videoParams.height = screenHeight
-            }
+//            }
 
 
             surfaceView.layoutParams = videoParams
