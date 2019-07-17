@@ -2,6 +2,7 @@ package ph.carlo.android.cldroidconhack.presentation
 
 import android.content.Context
 import androidx.fragment.app.Fragment
+import com.google.gson.internal.LinkedHashTreeMap
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -48,7 +49,7 @@ class FeaturePresenter(val mvpView: FeatureMVPView) {
     private fun interpret(featureFeed: FeatureFeed) {
        val features = featureFeed.features
 
-       val playerFeatures = features["player"]!! as HashMap<String, String>
+       val playerFeatures = features["player"]!! as HashMap<String, Any>
 
        val exoIsOn = playerFeatures["exoplayer"]!! as Boolean
        val mediaIsOn = playerFeatures["mediaplayer"]!! as Boolean

@@ -8,34 +8,65 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
+import com.google.gson.GsonBuilder
+import com.google.gson.Gson
+
+
 
 
 interface FeatureFeedAPIService {
     @GET("hmmh5")
-    fun getAllFeatures(): Call<FeatureFeedImplementation>
+    fun getAllFeatures(): Call<FeatureFeedResponse>
 }
+
+class PlayerFeatureResponse {
+    @SerializedName("exoplayer")
+    var exoPlayer: Boolean? = null
+
+    @SerializedName("mediaplayer")
+    var mediaPlayer: Boolean? = null
+}
+
+class FeaturesFeedResponse {
+    @SerializedName("player")
+    var player: PlayerFeatureResponse? = null
+}
+class FeatureFeedResponse {
+    @SerializedName("features")
+    var features: FeaturesFeedResponse? = null
+}
+
 class FeatureFeedImplementation: FeatureFeedAPIInterface {
     override fun getFeatureFeed(): Observable<FeatureFeed> {
+        val gson = GsonBuilder()
+            .setLenient()
+            .create()
         val retrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
         val service = retrofit.create(FeatureFeedAPIService::class.java)
         val call = service.getAllFeatures()
 
         return Observable.create {
-            call.enqueue(object : Callback<FeatureFeedImplementation>{
-                override fun onFailure(call: Call<FeatureFeedImplementation>, t: Throwable) {
+            call.enqueue(object : Callback<FeatureFeedResponse>{
+                override fun onFailure(call: Call<FeatureFeedResponse>, t: Throwable) {
                     it.onError(t)
                 }
 
                 override fun onResponse(
-                    call: Call<FeatureFeedImplementation>,
-                    response: Response<FeatureFeedImplementation>
+                    call: Call<FeatureFeedResponse>,
+                    response: Response<FeatureFeedResponse>
                 ) {
                     if (response.code() == 200) {
-                        val featureFeedImplementation = response.body()!!
-                        it.onNext(FeatureFeed(featureFeedImplementation.features!!))
+                        val featureFeedResponse = response.body()!!
+                        val playerFeatures = featureFeedResponse.features?.player
+                        val features = HashMap<String, Any>()
+                        val player = HashMap<String, Any>()
+                        player["exoplayer"] = playerFeatures!!.exoPlayer!!
+                        player["mediaplayer"] = playerFeatures!!.mediaPlayer!!
+                        features["player"] = player
+                        it.onNext(FeatureFeed(features))
                         it.onComplete()
                     }  else {
                         it.onError(Error())
@@ -50,6 +81,4 @@ class FeatureFeedImplementation: FeatureFeedAPIInterface {
         const val BASE_URL = "https://api.myjson.com/bins/"
     }
 
-    @SerializedName("features")
-    var features: HashMap<String, String>? = null
 }
