@@ -8,7 +8,7 @@ import com.google.gson.reflect.TypeToken
 class FeatureFeedMock: FeatureFeedAPIInterface {
     override fun getFeatureFeed(): Observable<FeatureFeed> {
       return Observable.create {
-          val mockedString = "{\"player\":{\"exoplayer\":false,\"mediaplayer\":true}}"
+          val mockedString = "{\"player\":{\"exoplayer\":true,\"mediaplayer\":true}}"
           val gson = Gson()
           val empMapType = object : TypeToken<HashMap<String, HashMap<String, Any>>>() {
           }.type
