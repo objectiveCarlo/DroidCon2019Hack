@@ -36,7 +36,7 @@ class FeatureFeedResponse {
     var features: FeaturesFeedResponse? = null
 }
 
-class FeatureFeedImplementation: FeatureFeedAPIInterface {
+class FeatureFeedMyJsonAPI: FeatureFeedAPIInterface {
     override fun getFeatureFeed(): Observable<FeatureFeed> {
         val gson = GsonBuilder()
             .setLenient()
