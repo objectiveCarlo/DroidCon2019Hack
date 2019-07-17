@@ -1,4 +1,4 @@
-mit package ph.carlo.android.cldroidconhack
+package ph.carlo.android.cldroidconhack
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
