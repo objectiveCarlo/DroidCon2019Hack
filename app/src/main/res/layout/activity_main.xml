@@ -6,7 +6,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.MainActivity">
-
+    <SurfaceView
+            android:id="@+id/surfaceView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
     <Button
             android:id="@+id/launch_player"
             android:layout_width="wrap_content"
