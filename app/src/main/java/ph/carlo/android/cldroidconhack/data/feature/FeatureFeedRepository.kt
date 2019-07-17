@@ -5,7 +5,7 @@ import io.reactivex.Observable
 object FeatureFeedRepository {
 
     private fun getDependency(): FeatureFeedAPIInterface {
-        return FeatureFeedImplementation()
+        return FeatureFeedMock()
     }
 
     fun getFeatureFeed(): Observable<FeatureFeed> {
