@@ -9,6 +9,8 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import ph.carlo.android.cldroidconhack.data.feature.FeatureFeed
 import ph.carlo.android.cldroidconhack.domain.GetFeatureFeed
+import ph.carlo.android.cldroidconhack.presentation.player.ExoPlayerFragment
+import ph.carlo.android.cldroidconhack.presentation.player.MediaPlayerFragment
 
 interface FeatureMVPView {
     fun whichPlayerFragment(fragment: Fragment)
@@ -64,11 +66,11 @@ class FeaturePresenter(val mvpView: FeatureMVPView) {
     }
 
     private fun initializeExo() {
-
+        mvpView.whichPlayerFragment(ExoPlayerFragment())
     }
 
     private fun initializeMedia() {
-
+        mvpView.whichPlayerFragment(MediaPlayerFragment())
     }
 
     fun turnOff() {

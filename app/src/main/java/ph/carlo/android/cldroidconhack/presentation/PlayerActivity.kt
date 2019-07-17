@@ -2,16 +2,16 @@ package ph.carlo.android.cldroidconhack.presentation
 
 import android.content.Context
 import android.os.Bundle
-import com.google.android.material.snackbar.Snackbar
-import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
-import ph.carlo.android.cldroidconhack.R
-
 import kotlinx.android.synthetic.main.activity_player.*
+import ph.carlo.android.cldroidconhack.R
 
 class PlayerActivity : AppCompatActivity(), FeatureMVPView{
     override fun whichPlayerFragment(fragment: Fragment) {
-
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+        fragmentTransaction.add(R.id.player_content, fragment)
+        fragmentTransaction.commit()
     }
 
     override fun getContext(): Context {
