@@ -38,3 +38,5 @@ The landscape player implementation is being controlled by a remote config.
 
 <a href="https://github.com/objectiveCarlo/android_droidconsghack/blob/master/app/src/main/java/ph/carlo/android/cldroidconhack/data/feature/FeatureFireStoreImplementation.kt"><img src="https://raw.githubusercontent.com/objectiveCarlo/android_droidconsghack/master/__images/firestore.png" title="CleanArchictecture" alt="CleanArchictecture"></a>
 
+## Sample Video
+https://www.youtube.com/watch?v=ozjtoTc5eS0
