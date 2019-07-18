@@ -1,4 +1,4 @@
-# DroidConSg Hack App
+# DroidConSg Video Hack App (DiVHA)
 
 This is app is a combination of some of the talks of DroidConSG 2019 plus some exoplayer concepts that is talk in Day2. I did this 
 app during the talks and after droidconsg day #1. This app play the video of droidconsg 2018 in portrait mode and in landscape mode. For landscape mode the player is  either MediaPlayer or Exoplayer, depending on the config from the FeatureFeedRepository class.
